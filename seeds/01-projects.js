@@ -1,9 +1,9 @@
 
 
 exports.seed = function(knex) {
-  return knex('projects').del()
+  return knex('Projects').del()
     .then(function () {
-      return knex('projects').insert([
+      return knex('Projects').insert([
         { project_name: 'test seed', description: 'test seed description', completed: true},
       ]);
     });

@@ -1,7 +1,6 @@
 const express = require('express');
-const db = require('./dbConfig.js');
 
-const Projects = require('./project-model.js');
+const Projects = require('./projects-model.js');
 
 const router = express.Router();
 
@@ -24,7 +23,7 @@ router.get('/', (req, res) => {
       if (resources.length) {
         res.json(resources);
       } else {
-        res.status(404).json({ message: 'Could not find steps for given source' })
+        res.status(404).json({ message: 'Could not find tasks for given source' })
       }
     })
     .catch(err => {
@@ -82,7 +81,7 @@ router.post('/:id/tasks', (req, res) => {
   Projects.findById(id)
   .then(task => {
     if (task) {
-      Projects.addTask(taskData, id)
+      projects.addTask(taskData, id)
       .then(task => {
         res.status(201).json(task);
       })

@@ -1,4 +1,4 @@
-const db = require('../data/dbConfig.js/index.js');
+const db = require('../data/dbConfig.js');
 
 module.exports = {
     findProjects,
@@ -61,9 +61,11 @@ function findById(id) {
 function update(id, changes) {
     return db('Projects').where({ id }).update(changes)
     .then( count => {
-        return findById(id)
-    })
+        return findById(id);
+    });
 }
 
 function remove(id) {
-    return db('Projects').where({ id }).del()
+    return db('Projects').where({ id }).del();
+
+}   

@@ -1,14 +1,14 @@
 
 exports.up = function(knex) {
-    return knex.schema.createTable('projects', tbl => {
-        tbl.increments(id).unique;
+    return knex.schema.createTable('Projects', tbl => {
+        tbl.increments();
         tbl.string('project_name', 128).notNullable();
         tbl.string('description', 128);
-        tbl.bool('completed', false).notNullable();
+        tbl.bool('completed', false);
     })
 
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTableIfExists('projects')
+  return knex.schema.dropTableIfExists('Projects')
 };

@@ -1,6 +1,6 @@
 
 exports.up = function(knex) {
-  return knex.schema.createTable('resources', tbl => {
+  return knex.schema.createTable('Resources', tbl => {
       tbl.increments();
       tbl.string('resource_name', 128).notNullable();
       tbl.string('description', 128);
@@ -8,7 +8,7 @@ exports.up = function(knex) {
       .notNullable()
       .unsigned()
       .references('id')
-      .inTable('projects')
+      .inTable('Projects')
       .onUpdate('Cascade')
       .onDelete('Cascade');
 
@@ -16,5 +16,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  return schema.dropTableIfExists('resources')
+  return schema.dropTableIfExists('Resources')
 };

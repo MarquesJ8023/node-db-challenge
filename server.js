@@ -1,23 +1,17 @@
 const express = require('express');
 const server = express();
-
+const ProjectRouter = require('./projects/projects-router.js');
+const db = require('./data/dbConfig.js')
 
 server.use(express.json());
 
-server.get('/api/projects', (req, res) => {
-    db('projects')
-    .then(projects => {
-        res.status(200).json(projects);
-    });
-    
-});
+const port = process.env.PORT || 4000
 
-server.get('/api/resources', (req, res) => {
-    db('resources')
-    .then(resources => {
-        res.status(200).json(resources);
-    });
+server.listen(port, () => {
+    console.log(`server running on ${port}`)
+})
 
-});
+server.use('/api/projects', ProjectRouter);
+
 
 module.exports = server;
