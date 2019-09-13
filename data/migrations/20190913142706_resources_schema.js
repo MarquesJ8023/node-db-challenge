@@ -4,6 +4,14 @@ exports.up = function(knex) {
       tbl.increments();
       tbl.string('resource_name', 128).notNullable();
       tbl.string('description', 128);
+      tbl.integer('project_id')
+      .notNullable()
+      .unsigned()
+      .references('id')
+      .inTable('projects')
+      .onUpdate('Cascade')
+      .onDelete('Cascade');
+
   })
 };
 
